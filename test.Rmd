@@ -9,4 +9,12 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-test second time
+```{r}
+0.0002457 + 2.0484*(sqrt((0.01^2*29)/28)/sqrt((35^2)^29))
+0.0002457- 2.0484*
+  
+0.0002457 + 2.0484*(sqrt(((0.01^2)*29)/28) / (sqrt((35^2)*29)))
+
+
+```
+
