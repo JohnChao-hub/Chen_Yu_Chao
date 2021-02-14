@@ -1,0 +1,58 @@
+---
+title: "HW2"
+author: "Chao Chen Yu"
+date: "2/14/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+
+1.
+There are four variables. Murder and Rape are doubles. Assault and UrbanPop are integers.
+```{r}
+data(USArrests)
+str(USArrests)
+```
+
+2.
+```{r}
+USArrests %>%
+  map_dbl(max)
+  
+
+USArrests %>%
+  filter(Assault == 337) 
+#North Carolina
+```
+
+3.
+```{r}
+library(nycflights13)
+flights
+```
+
+4.
+```{r}
+str(flights) #tibble [336,776 × 19]
+typeof(flights)
+```
+
+5.
+```{r}
+flights %>% 
+  map(typeof)
+```
+
+6.
+```{r}
+ models <- iris %>%
+  split(.$Species) %>%
+   map(~lm(Sepal.Length~Sepal.Width , data = .))
+
+models
+```
+
