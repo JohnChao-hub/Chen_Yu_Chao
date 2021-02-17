@@ -12,7 +12,9 @@ library(tidyverse)
 
 
 1.
+It's a data frame.
 There are four variables. Murder and Rape are doubles. Assault and UrbanPop are integers.
+And the data set have 50 observations.
 ```{r}
 data(USArrests)
 str(USArrests)
@@ -22,11 +24,10 @@ str(USArrests)
 ```{r}
 USArrests %>%
   map_dbl(max)
-  
 
-USArrests %>%
-  filter(Assault == 337) 
-#North Carolina
+row.names(USArrests)[map_dbl(USArrests,which.max)]
+
+cat("North Carolina has the largest number of Assaults")
 ```
 
 3.
@@ -39,7 +40,11 @@ flights
 ```{r}
 str(flights) #tibble [336,776 × 19]
 typeof(flights)
+class(flights) #  It's a tibble.
 ```
+The flights contains 336,766 rows and 19 columns. 
+It provides the actual departure and arrival times and scheduled departure and arrival times.
+Comparing to data.frame, tibble is more easily to browse the data set.
 
 5.
 ```{r}
@@ -51,8 +56,23 @@ flights %>%
 ```{r}
  models <- iris %>%
   split(.$Species) %>%
-   map(~lm(Sepal.Length~Sepal.Width , data = .))
+   map(~lm(Sepal.Length~Sepal.Width , data = .)) 
 
 models
+```
+
+7.
+```{r}
+V <-  list(12, 22, 27, 31.5, NA, 39, "east")
+
+length(V) #7a
+V[is.na(V)] #7b
+V[[3]] #7c
+V[c(which.min(V[map(V,class)=="numeric"]),which(map(V,class)=="character"))] #7d
+class(V[[7]]) #7e
+```
+
+```{r}
+
 ```
 
